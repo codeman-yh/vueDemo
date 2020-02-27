@@ -1,14 +1,14 @@
 <template>
     <div class="todo-main">
         <Item v-for= "(todo,index) in todos" :key= "index" :todo= "todo"
-        :deleteTodo= "deleteTodo" :updateTodo= "updateTodo" :index= "index"/>
+         :updateTodo= "updateTodo" :index= "index"/>
     </div>
 </template>
 
 <script>
 import Item from './Item.vue'
 export default {
-  props: ['todos', 'deleteTodo', 'updateTodo'],
+  props: ['todos', 'updateTodo'],
  components: {
     Item
   }

@@ -7,13 +7,13 @@
 
 <script>
 export default {
-  props: {
+ /*  props: {
     addTodo: {
       type: Function,
       required: true
     }
   },
-
+ */
   data () {
     return {
       title: ''
@@ -34,7 +34,10 @@ export default {
       title
     }
     // 添加输入的值到App组件中的todos数组
-    this.addTodo(todo)
+     // this.addTodo(todo)
+    // 分发自定义事件（addTodo）
+    this.$emit('addTodo', todo)
+
     // 清除输入
     this.title = ''
     }

@@ -6,7 +6,7 @@
       <span>
       <span>已完成 {{completedCount}} </span>/全部 {{this.todos.length}}
       </span>
-    <button class="btn btn-danger" v-if = "completedCount>0" @click= "deleteCompleted">清除已完成任务</button>
+  <button class="btn btn-danger" v-if = "completedCount>0" @click= "deleteCompleted">清除已完成任务</button>
   </div>
 </template>
 

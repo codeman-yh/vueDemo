@@ -1,27 +1,21 @@
 <template>
   <li @mouseenter="handleEnter(true)" @mouseleave="handleEnter(false)"
-  :style= "{backgroundcolor:bgColor}">
+  :style= "{backgroundcolor: bgColor}">
     <label>
-      <input type= "checkbox" v-model="isCheck">
+      <input type="checkbox" v-model= "isCheck">
       <span>{{todo.title}}</span>
     </label>
-    <button class= "btn btn-danger" v-show="isShow" @click= "deleteItem">删除</button>
+    <button class= "btn btn-danger" @click= "deleteItem" v-show= "isShow">删除</button>
   </li>
 </template>
 
 <script>
-/*
-  模板中读取数据的来源:
-    data: 自身可变数据
-    props: 外部传入的可弯数据
-    computed: 基于已有数据的计算属性
-*/
 export default {
   props: {
-    'todo': Object,
-    'deleteTodo': Function,
-    'index': Number,
-    'updateTodo': Function
+    todo: Object,
+    deleteTodo: Function,
+    index: Number,
+    updateTodo: Function
   },
   data () {
     return {
@@ -30,20 +24,20 @@ export default {
     }
   },
   methods: {
-    handleEnter (isEnter) {
-      if (isEnter) {
-        this.bgColor = '#cccccc'
-        this.isShow = true
-      } else {
-        this.bgColor = 'white'
-        this.isShow = false
+    deleteItem () {
+      if (confirm('确认删除吗？')) {
+      this.deleteTodo(this.index)
       }
     },
-    deleteItem () {
-      if (confirm('确定删除吗')) {
-      this.deleteTodo(this.index)
+    handleEnter (isEnter) {
+      if (isEnter) {
+        this.isShow = true
+        this.bgColor = '#cccccc'
+      } else {
+        this.isShow = false
+        this.bgColor = 'white'
+      }
     }
-  }
   },
   computed: {
     isCheck: {
@@ -58,7 +52,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   li{
     list-style: none;
     height: 36px;
